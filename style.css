@@ -1,0 +1,326 @@
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+
+
+html{
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a, a:link, a:visited {
+    color: inherit;
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 20px; /* 패딩 추가 */
+}
+
+header {
+    position: fixed;
+    color: white;
+    background-color: black;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    padding: 0.5rem;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+header nav ul {
+    display: flex;
+}
+
+header nav ul li {
+    padding: 1rem; /* 픽셀 대신 rem 사용 */
+}
+
+header button {
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+header h1 button {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    margin-left: 1rem;
+}
+
+header nav ul li button {
+    font-size: 1.75rem;
+    color: white;
+}
+
+header nav ul li a {
+    font-size: 1.75rem;
+    color: white;
+}
+
+header.active {
+    background-color: rgba(0, 0, 0);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+* {
+    font-family: "Do Hyeon", sans-serif;
+}
+
+main {
+    width: 100%;
+    height: 100vh;
+    color: white;
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("./background.jpg") center center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+main h2 {
+    font-size: 3.5rem;
+    margin: 2rem 0;
+    letter-spacing: 3px;
+    margin-bottom: 3rem;
+}
+
+main p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+section {
+    width: 100%;
+    min-height: 100vh; /* 최소 높이 설정 */
+    padding: 4rem 0;
+    font-family: "Do Hyeon", sans-serif;
+}
+
+section:nth-child(2n) {
+    background-color: white;
+}
+
+section .title {
+    margin-bottom: 3rem;
+    text-align: left;
+    padding: 0 1rem; /* 패딩 추가 */
+}
+
+section .title h4 {
+    font-size: 1.35rem;
+    color: black;
+}
+
+section .title h2 {
+    font-size: 3rem;
+}
+
+section .title p {
+    font-size: 1.15rem;
+}
+
+.item-list {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem; /* 간격을 %나 rem 단위로 */
+    flex-wrap: wrap;
+    justify-content: flex-start; /* 아이템들이 왼쪽 정렬되도록 */
+}
+
+/* 아이템별 클래스들 */
+.담요, .공학용계산기, .충전기, .고데기, .돗자리, .우산 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 300px; /* 최대 너비로 제한 */
+    height: auto;
+    padding: 1rem;
+}
+
+.담요 img, .공학용계산기 img, .충전기 img, .고데기 img, .돗자리 img, .우산 img {
+    width: 100%;
+    height: auto;
+    margin-bottom: .75rem;
+}
+
+.담요 span, .공학용계산기 span, .충전기 span, .고데기 span, .돗자리 span, .우산 span {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem; /* 상대적 단위로 크기 조정 */
+}
+
+.about-us {
+    width: 100%;
+    height: auto;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.about-us h5 {
+    font-size: 1.75rem;
+}
+
+.about-us h4 {
+    font-size: 2.5rem;
+    margin: 2rem 0;
+    letter-spacing: 2px;
+}
+
+.about-us p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.15rem;
+    padding: 0 1rem;
+}
+
+section.CONTACT .contact-me::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+section.CONTACT .contact-me .left,
+section.CONTACT .contact-me .right {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+section.CONTACT .contact-me .left .card {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.25rem;
+}
+
+section.CONTACT .contact-me .left .card .icon i {
+    font-size: 2rem;
+    margin-right: 15px;
+}
+
+section.CONTACT .contact-me .right .form-group {
+    margin-bottom: 1.25rem;
+}
+
+section.CONTACT .contact-me .right .form-group label {
+    display: block;
+    margin-bottom: 0.85rem;
+}
+
+section.CONTACT .contact-me .right .form-group input {
+    padding: .625rem;
+    width: 100%;
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+section.CONTACT .contact-me .right .form-group input:focus {
+    border: 1px solid #719ECE;
+    box-shadow: 0 0 10px #719ECE;
+}
+
+section.CONTACT .contact-me .right .form-group textarea {
+    height: 300px;
+    width: 100%;
+    resize: none;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+section.CONTACT .contact-me .right .form-group textarea:focus {
+    outline: none;
+    border: 1px solid #719ECE;
+    box-shadow: 0 0 10px #719ECE;
+}
+
+section.CONTACT .contact-me .right button {
+    width: 100%;
+    padding: 1rem;
+    background-color: #f78b00;
+    border: none;
+    color: white;
+}
+
+/* 햄버거 메뉴 스타일 추가 */
+header nav .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+header nav .hamburger .line {
+    width: 25px;
+    height: 3px;
+    background: white;
+    transition: 0.3s;
+}
+
+/* 햄버거 메뉴 활성화 시 스타일 */
+header nav ul.active {
+    display: flex;
+}
+
+/* 모바일 메뉴 스타일 */
+@media (max-width: 768px) {
+    header nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px; /* 헤더의 높이에 따라 조정 */
+        left: 0;
+        background-color: black;
+        text-align: center;
+    }
+
+    header nav ul.active {
+        display: flex;
+    }
+
+    header nav ul li {
+        padding: 1rem;
+    }
+
+    header nav .hamburger {
+        display: flex;
+    }
+}

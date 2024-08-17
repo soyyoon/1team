@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전정공 대여소</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>
+                <button data-animation-scroll="true" data-target="#main">전정공 대여소</button>
+            </h1>
+            <nav>
+                <div class="hamburger">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+                <ul>
+                    <li>
+                        <a href="#RENTAL" data-animation-scroll="true">RENTAL</a>
+                    </li>
+                    <li>
+                        <a href="#ABOUT" data-animation-scroll="true">ABOUT</a>
+                    </li>
+                    <li>
+                        <a href="#CONTACT" data-animation-scroll="true">CONTACT</a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/soyyoon/hackerthon.git" target="_blank" title="깃허브">GITHUB</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main id="main">
+        <div class="container">
+            <h2>전정공 대여소란?</h2>
+            <p>전정공에서 진행하는 물품 대여사업의 효율적인 물품 관리를 위한</p> 
+            <p>실시간 물품별 잔여 수량과 반납기한을 공지하는 시스템입니다.</p>
+        </div>
+    </main>
+    <section id="RENTAL" class="RENTAL">
+        <div class="container">
+            <div class="title">
+                <h4>대여하기</h4>
+                <h2>물품 선택</h2>
+            </div>
+            <div class="item-list">
+                {% for item in items %} 
+                    <button class="{{ item.name }}"> 
+                        <img src="{{ url_for('static', filename=item.name + '.jpg') }}" alt="{{ item.name }}"> 
+                        <span>{{ item.name }}</span>
+                        <span>잔여 수량: {{ item.available_quantity }}</span> 
+                        <span>반납 예정일: {{ item.due_date or '대여 가능' }}</span> 
+                    </button>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section id="ABOUT" class="ABOUT">
+        <div class="container">
+            <div class="title">
+                <h4>About us</h4>
+                <h2>무제(舞帝)</h2>
+            </div>
+            <div class="about-us">
+                <h5>안녕하세요</h5>
+                <h4>전정공 소모임 로보틱스 소속 "무제"입니다</h4>
+                <p>저희는 이번 여름방학에 진행된 로보틱스 주관 2024 하계 해커톤을 계기로 모이게 되었습니다.</p>
+                <p>이번 하계 해커톤 주제는 사용자를 가장 많이 모을 수 있는 웹프로그래밍이었습니다.</p>
+                <p>저희 무제는 전정공 물품 대여사업의 물품별 잔여수량 실시간 알림을 최종 주제로 삼았습니다.</p>
+                <p>현재 전정공에서 진행하는 물품 대여사업은 잔여 수량을 실시간으로 파악할 수 없어 불필요한 컴실 방문 사례가 빈번합니다.</p>
+                <p>따라서 보다 효율적이고 편리하게 원격으로 물품 수량을 확인을 목표로 만들어졌습니다.</p>
+                <p>부족한 실력이지만 발전하는 <strong>무제</strong>가 되도록 하겠습니다.</p>
+                <br>
+                <br>
+                <p>이소윤(it융합, 백엔드), 박신주(it융합, 백엔드), 유영찬(전자, 프론트엔드), 양성욱(전자, 프론트엔드)</p>
+            </div>
+        </div>
+    </section>
+    <section id="CONTACT" class="CONTACT">
+        <div class="container">
+            <div class="title">
+                <h4>CONTACT</h4>
+                <h2>문의하기</h2>
+            </div>
+            <div class="contact-me">
+                <div class="left">
+                    <div class="card">
+                        <div class="icon">
+                            <i class="fa-solid fa-envelope-open-text"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>메일</h3>
+                            <p>syzzang7564@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="icon">
+                            <i class="fa-solid fa-location-crosshairs"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>주소</h3>
+                            <p>숭실대학교 형남공학관 512호</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="right">
+                    <form action="#">
+                        <div class="form-group">
+                            <label for="name">name</label>
+                            <input type="text" id="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">email</label>
+                            <input type="text" id="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="msg">message</label>
+                            <textarea id="msg"></textarea>
+                        </div>
+                        <button type="submit">send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="{{ url_for('static', filename='script.js') }}"></script> 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</body>
+</html>
