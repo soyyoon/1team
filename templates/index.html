@@ -56,7 +56,7 @@
                         <img src="{{ url_for('static', filename=item.name + '.jpg') }}" alt="{{ item.name }}"> 
                         <span>{{ item.name }}</span>
                         <span>잔여 수량: {{ item.available_quantity }}</span> 
-                        <span>반납 예정일: {{ item.due_date or '대여 가능' }}</span> 
+                        <span>반납 예정일: {{ item.due_date }}</span> 
                     </button>
                 {% endfor %}
             </div>
