@@ -3,8 +3,11 @@ from flask_mysqldb import MySQL
 from config import Config
 import MySQLdb.cursors
 import traceback
+import os
 
-app = Flask(__name__, static_folder='client/static', template_folder='client/templates')
+app = Flask(__name__,
+            static_folder=os.path.join(os.getcwd(), 'client/static'),
+            template_folder=os.path.join(os.getcwd(), 'client/templates'))
 app.config.from_object(Config)
 
 app.config['MYSQL_USER'] = 'root'
