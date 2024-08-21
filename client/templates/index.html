@@ -50,16 +50,22 @@
                 <h4>대여하기</h4>
                 <h2>물품 선택</h2>
             </div>
+            
             <div class="item-list">
-                {% for item in items %} 
-                    <button class="{{ item.name }}"> 
-                        <img src="{{ url_for('static', filename=item.name + '.jpg') }}" alt="{{ item.name }}"> 
-                        <span>{{ item.name }}</span>
-                        <span>잔여 수량: {{ item.available_quantity }}</span> 
-                        <span>반납 예정일: {{ item.due_date }}</span> 
-                    </button>
-                {% endfor %}
+                {% if items %}
+                    {% for item in items %} 
+                        <button class="{{ item['name'] }}"> 
+                            <img src="{{ url_for('static', filename=item['name'] + '.jpg') }}" alt="{{ item['name'] }}"> 
+                            <span>{{ item['name'] }}</span>
+                            <span>잔여 수량: {{ item['available_quantity'] }}</span> 
+                            <span>반납 예정일: {{ item['due_date'] }}</span> 
+                        </button>
+                    {% endfor %}
+                {% else %}
+                    <p>No items found.</p>
+                {% endif %}
             </div>
+            
         </div>
     </section>
     <section id="ABOUT" class="ABOUT">
