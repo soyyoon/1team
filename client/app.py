@@ -2,6 +2,7 @@ from flask import Flask, render_template
 from flask_mysqldb import MySQL
 from config import Config
 import MySQLdb.cursors
+import traceback
 
 app = Flask(__name__, static_folder='client/static', template_folder='client/templates')
 app.config.from_object(Config)
@@ -25,7 +26,21 @@ def index():
 
     except Exception as e:
         print(f"Error: {e}")  # 로그에 오류 메시지를 기록합니다.
+        traceback.print.exc()  # 자세한 에러 스택 출력
         return "An error occurred."
+
+@app.route('/test_db')
+def test_db():
+    try:
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT 1")
+        result = cur.fetchone()
+        cur.close()
+        return f"MySQL is working: {result}"
+    except Exception as e:
+        print(f"Error: {e}")
+        traceback.print_exc()
+        return "Database connection failed."
 
 if __name__ == '__main__':
     app.run(debug=True)
