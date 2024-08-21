@@ -6,6 +6,10 @@ import MySQLdb.cursors
 app = Flask(__name__, static_folder='client/static', template_folder='client/templates')
 app.config.from_object(Config)
 
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = '1234'  # root 계정의 비밀번호
+
+
 mysql = MySQL(app)
 
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
