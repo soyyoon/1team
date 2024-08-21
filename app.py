@@ -6,8 +6,8 @@ import traceback
 import os
 
 app = Flask(__name__,
-            static_folder=os.path.join(os.getcwd(), 'client/static'),
-            template_folder=os.path.join(os.getcwd(), 'client/templates'))
+            static_folder=os.path.join(os.getcwd(), 'static'),
+            template_folder=os.path.join(os.getcwd(), 'templates'))
 app.config.from_object(Config)
 
 app.config['MYSQL_USER'] = 'root'
