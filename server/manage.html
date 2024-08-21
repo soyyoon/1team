@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>전정공 대여소 관리자 버전</title> 
-    <link rel="stylesheet" href="{{ url_for() }}">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
     <header>
@@ -49,6 +50,7 @@
         </div>
     </main>
 
-    <script src="{{ url_for('script.js') }}"></script> 
+    <script src="{{ url_for('static', filename='manage.js') }}"></script>
+
 </body>
 </html>
