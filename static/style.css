@@ -121,7 +121,7 @@ main p {
 section {
     width: 100%;
     min-height: 100vh; /* 최소 높이 설정 */
-    padding: 4rem 0;
+    padding: 5rem 0;
     font-family: "Do Hyeon", sans-serif;
 }
 
@@ -171,7 +171,9 @@ section .title p {
 .담요 img, .공학용계산기 img, .충전기 img, .고데기 img, .돗자리 img, .우산 img {
     width: 100%;
     height: auto;
-    margin-bottom: .75rem;
+    object-fit: cover;
+    display:block;
+    margin: 0 auto;
 }
 
 .담요 span, .공학용계산기 span, .충전기 span, .고데기 span, .돗자리 span, .우산 span {

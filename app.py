@@ -1,19 +1,27 @@
 from flask import Flask, render_template
 from flask_mysqldb import MySQL
 from config import Config
+import MySQLdb.cursors
 
 app = Flask(__name__, template_folder='templates', static_folder='static')  # static 폴더 설정 추가
 app.config.from_object(Config)
 
 mysql = MySQL(app)
 
+app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
+
 @app.route('/')
 def index():
-    cur = mysql.connection.cursor()
-    cur.execute('SELECT * FROM items')
-    items = cur.fetchall()
-    cur.close()
-    return render_template('index.html', items=items)
+    try:
+        cur = mysql.connection.cursor()
+        cur.execute('SELECT * FROM items')
+        items = cur.fetchall()
+        cur.close()
+        return render_template('index.html', items=items)
+
+    except Exception as e:
+        print(f"Error: {e}")  # 로그에 오류 메시지를 기록합니다.
+        return "An error occurred."
 
 if __name__ == '__main__':
     app.run(debug=True)
