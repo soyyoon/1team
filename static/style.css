@@ -156,6 +156,31 @@ section .title p {
     justify-content: flex-start; /* 아이템들이 왼쪽 정렬되도록 */
 }
 
+.item-list > * {
+    flex: 0 0 calc(33.33% - 2rem);
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1rem; 
+    padding-left: 1rem; 
+    padding-right: 1rem;
+}
+
+.item-list img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    max-height: 300px;
+}
+
+.item-list span {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
 /* 아이템별 클래스들 */
 .담요, .공학용계산기, .충전기, .고데기, .돗자리, .우산 {
     display: flex;
@@ -324,5 +349,15 @@ header nav ul.active {
 
     header nav .hamburger {
         display: flex;
+    }
+
+    .item-list > * {
+        flex: 0 0 calc(50% - 2rem);
+    }
+}
+
+@media (max-width: 480px) {
+    .item-list > * {
+        flex: 0 0 100%;
     }
 }
