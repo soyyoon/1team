@@ -5,18 +5,25 @@ import MySQLdb.cursors
 import traceback
 import os
 
+from werkzeug.middleware.proxy_fix import ProxyFix
+
 app = Flask(__name__,
             static_folder=os.path.join(os.getcwd(), 'static'),
             template_folder=os.path.join(os.getcwd(), 'templates'))
 app.config.from_object(Config)
 
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = '1234'  # root 계정의 비밀번호
-
+# 환경 변수에서 데이터베이스 연결 정보 가져오기
+app.config['MYSQL_USER'] = os.environ.get('MYSQL_USER')
+app.config['MYSQL_PASSWORD'] = os.environ.get('MYSQL_PASSWORD')
+app.config['MYSQL_HOST'] = os.environ.get('MYSQL_HOST')
+app.config['MYSQL_DB'] = os.environ.get('MYSQL_DB')
+app.config['MY SQL_PORT'] = int(os.environ.get('MYSQL_PORT', 3306)) 
 
 mysql = MySQL(app)
 
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
+
+app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_port=1)
 
 @app.route('/')
 def index():
