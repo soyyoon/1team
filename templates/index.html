@@ -12,7 +12,7 @@
     <header>
         <div class="container">
             <h1>
-                <button data-animation-scroll="true" data-target="#main">전정공 대여소</button>
+                <a href="#main" data-animation-scroll="true">전정공 대여소</a>
             </h1>
             <nav>
                 <div class="hamburger">
@@ -54,18 +54,17 @@
             <div class="item-list">
                 {% if items %}
                     {% for item in items %} 
-                        <button class="{{ item['name'] }}"> 
-                            <img src="{{ url_for('static', filename=item['name'] + '.jpg') }}" alt="{{ item['name'] }}"> 
-                            <span>{{ item['name'] }}</span>
+                        <button class="{{ item['item_name'] }}"> 
+                            <img src="{{ url_for('static', filename=item['item_name'] + '.jpg') }}" alt="{{ item['itemname'] }}"> 
+                            <span>{{ item['item_name'] }}</span>
                             <span>잔여 수량: {{ item['available_quantity'] }}</span> 
-                            <span>반납 예정일: {{ item['due_date'] }}</span> 
+                            <span>반납 예정일: {{ item['return_deadline'] }}</span> 
                         </button>
                     {% endfor %}
                 {% else %}
                     <p>No items found.</p>
                 {% endif %}
-            </div>
-            
+            </div>  
         </div>
     </section>
     <section id="ABOUT" class="ABOUT">
