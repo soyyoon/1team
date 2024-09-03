@@ -1,7 +1,7 @@
 class Config:
-    MYSQL_HOST = 'localhost'
-    MYSQL_USER = 'root'
-    MYSQL_PASSWORD = '1234' 
+    MYSQL_HOST = 'soyoon.mysql.pythonanywhere-services.com'
+    MYSQL_USER = 'soyoon'
+    MYSQL_PASSWORD = 'rental_ssu' 
     MYSQL_DB = 'rental_ssu' 
     
     MYSQL_PORT = 3306
