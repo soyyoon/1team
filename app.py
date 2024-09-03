@@ -1,28 +1,31 @@
 from flask import Flask, render_template
 from flask_mysqldb import MySQL
-from config import Config
 import MySQLdb.cursors
 import traceback
 import os
-
 from werkzeug.middleware.proxy_fix import ProxyFix
 
+# Flask 애플리케이션 생성
 app = Flask(__name__,
             static_folder=os.path.join(os.getcwd(), 'static'),
             template_folder=os.path.join(os.getcwd(), 'templates'))
-app.config.from_object(Config)
 
-# 환경 변수에서 데이터베이스 연결 정보 가져오기
-app.config['MYSQL_USER'] = os.environ.get('MYSQL_USER')
-app.config['MYSQL_PASSWORD'] = os.environ.get('MYSQL_PASSWORD')
-app.config['MYSQL_HOST'] = os.environ.get('MYSQL_HOST')
-app.config['MYSQL_DB'] = os.environ.get('MYSQL_DB')
-app.config['MY SQL_PORT'] = int(os.environ.get('MYSQL_PORT', 3306)) 
+# Config.py에서 설정 로드
+app.config.from_object('config.Config')
+
+# 데이터베이스 연결 정보 설정
+app.config['MYSQL_USER'] = 'soyoon'  # PythonAnywhere 사용자 이름
+app.config['MYSQL_PASSWORD'] = 'rental_ssu'  # 실제 비밀번호
+app.config['MYSQL_HOST'] = 'soyoon.mysql.pythonanywhere-services.com'  # 호스트
+app.config['MYSQL_DB'] = 'rental_ssu'  # 데이터베이스 이름
+app.config['MYSQL_PORT'] = int(os.environ.get('MYSQL_PORT', 3306))  # MySQL 포트
 
 mysql = MySQL(app)
 
+# 커서 클래스 설정
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
+# ProxyFix 설정
 app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_port=1)
 
 @app.route('/')
@@ -36,7 +39,7 @@ def index():
 
     except Exception as e:
         print(f"Error: {e}")  # 로그에 오류 메시지를 기록합니다.
-        traceback.print.exc()  # 자세한 에러 스택 출력
+        traceback.print_exc()  # 자세한 에러 스택 출력
         return "An error occurred."
 
 @app.route('/test_db')
