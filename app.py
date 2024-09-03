@@ -15,7 +15,7 @@ app.config.from_object('config.Config')
 
 # 데이터베이스 연결 정보 설정
 app.config['MYSQL_USER'] = 'soyoon'  # PythonAnywhere 사용자 이름
-app.config['MYSQL_PASSWORD'] = 'rental_ssu'  # 실제 비밀번호
+app.config['MYSQL_PASSWORD'] = '1234'  # 실제 비밀번호
 app.config['MYSQL_HOST'] = 'soyoon.mysql.pythonanywhere-services.com'  # 호스트
 app.config['MYSQL_DB'] = 'rental_ssu'  # 데이터베이스 이름
 app.config['MYSQL_PORT'] = int(os.environ.get('MYSQL_PORT', 3306))  # MySQL 포트
