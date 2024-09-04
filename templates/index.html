@@ -54,8 +54,13 @@
             <div class="item-list">
                 {% if items %}
                     {% for item in items %} 
+<<<<<<< HEAD
                         <button class="{{ item['name'] }}"> 
                             <img src="{{ url_for('static', filename=item['item_name'] + '.jpg') }}" alt="{{ item['item_name'] }}"> 
+=======
+                        <button class="{{ item['item_name'] }}"> 
+                            <img src="{{ url_for('static', filename=item['item_name'] + '.jpg') }}" alt="{{ item['itemname'] }}"> 
+>>>>>>> 5e4112b407d67b13f9a6cd149379471275d1a08a
                             <span>{{ item['item_name'] }}</span>
                             <span>잔여 수량: {{ item['available_quantity'] }}</span> 
                             <span>반납 예정일: {{ item['return_deadline'] }}</span> 
@@ -64,8 +69,7 @@
                 {% else %}
                     <p>No items found.</p>
                 {% endif %}
-            </div>
-            
+            </div>  
         </div>
     </section>
     <section id="ABOUT" class="ABOUT">
